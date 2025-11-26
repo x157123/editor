@@ -133,6 +133,13 @@ const defaultOptions: UmoEditorOptions = {
   },
   user: {},
   users: [],
+  comment: {
+    enabled: true,
+    currentUser: {
+      id: 'default-user',
+      name: '默认用户',
+    },
+  },
   extensions: [],
   disableExtensions: [],
   translations: {
@@ -891,6 +898,78 @@ const ojbectSchema = new ObjectSchema({
       })
     },
     required: false,
+  },
+  comment: {
+    merge: 'replace',
+    validate: 'object',
+    required: false,
+    schema: {
+      enabled: {
+        merge: 'replace',
+        validate: 'boolean',
+        required: false,
+      },
+      currentUser: {
+        merge: 'replace',
+        validate: 'object',
+        required: false,
+        schema: {
+          id: {
+            merge: 'replace',
+            validate: 'string!',
+            required: false,
+          },
+          name: {
+            merge: 'replace',
+            validate: 'string!',
+            required: false,
+          },
+          avatar: {
+            merge: 'replace',
+            validate: 'string',
+            required: false,
+          },
+        },
+      },
+      onChange: {
+        merge: 'replace',
+        validate(value: any) {
+          if (value && !isFunction(value)) {
+            throw new Error('Key "comment": Key "onChange" must be a function.')
+          }
+        },
+        required: false,
+      },
+      onResolve: {
+        merge: 'replace',
+        validate(value: any) {
+          if (value && !isFunction(value)) {
+            throw new Error('Key "comment": Key "onResolve" must be a function.')
+          }
+        },
+        required: false,
+      },
+      onDelete: {
+        merge: 'replace',
+        validate(value: any) {
+          if (value && !isFunction(value)) {
+            throw new Error('Key "comment": Key "onDelete" must be a function.')
+          }
+        },
+        required: false,
+      },
+      onCommentClick: {
+        merge: 'replace',
+        validate(value: any) {
+          if (value && !isFunction(value)) {
+            throw new Error(
+              'Key "comment": Key "onCommentClick" must be a function.',
+            )
+          }
+        },
+        required: false,
+      },
+    },
   },
   extensions: {
     merge: 'replace',

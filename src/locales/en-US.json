@@ -774,6 +774,35 @@
     "minute": "{n} minutes",
     "second": "{n} seconds"
   },
+  "comment": {
+    "title": "Comments",
+    "add": "Add Comment",
+    "selectTextFirst": "Please select text first",
+    "selectedText": "Selected text",
+    "inputPlaceholder": "Enter comment content...",
+    "contentRequired": "Comment content cannot be empty",
+    "userRequired": "Please configure current user information first",
+    "addSuccess": "Comment added successfully",
+    "defaultUser": "Default User",
+    "anonymous": "Anonymous",
+    "unresolved": "Unresolved",
+    "resolved": "Resolved",
+    "empty": "No comments yet",
+    "reply": "Reply",
+    "edit": "Edit",
+    "delete": "Delete",
+    "resolve": "Resolve",
+    "reopen": "Reopen",
+    "save": "Save",
+    "cancel": "Cancel",
+    "editPlaceholder": "Edit comment...",
+    "replyPlaceholder": "Type your reply...",
+    "viewComment": "View Comment",
+    "justNow": "Just now",
+    "minutesAgo": "{minutes} minutes ago",
+    "hoursAgo": "{hours} hours ago",
+    "daysAgo": "{days} days ago"
+  },
   "dialog": {
     "cancel": "Cancel"
   }

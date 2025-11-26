@@ -204,6 +204,9 @@
     </template>
     <div class="umo-bubble-menu-divider"></div>
     <slot name="bubble_menu" />
+    <!--批注-->
+    <div class="umo-bubble-menu-divider"></div>
+    <menus-bubble-comment />
   </template>
 </template>
 
@@ -213,6 +216,13 @@ const options = inject('options')
 const disableMenu = (name: string) => {
   return options.value.disableExtensions.includes(name)
 }
+
+// 检查是否有选中文本
+const hasSelection = computed(() => {
+  if (!editor.value) return false
+  const { from, to } = editor.value.state.selection
+  return from !== to
+})
 </script>
 
 <style lang="less">

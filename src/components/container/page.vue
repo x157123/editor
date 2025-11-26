@@ -84,6 +84,7 @@
     />
     <container-search-replace />
     <container-print />
+    <container-comment v-if="commentPanel" />
   </div>
   <div v-if="viewerVisible" class="umo-viewer-container">
     <umo-viewer
@@ -102,6 +103,7 @@ import type { WatermarkOption } from '@/types'
 const container = inject('container')
 const imageViewer = inject('imageViewer')
 const pageOptions = inject('page')
+const commentPanel = inject('commentPanel')
 
 // 页面大小
 const pageSize = $computed(() => {

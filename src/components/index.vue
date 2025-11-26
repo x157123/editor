@@ -153,6 +153,8 @@ const uploadFileMap = ref(new Map())
 // const bookmark = ref(false)
 const destroyed = ref(false)
 const typeWriterIsRunning = ref(false)
+const commentPanel = ref(false)
+const commentState = ref(null)
 provide('container', container)
 provide('options', options)
 provide('editor', editor)
@@ -171,6 +173,8 @@ provide('uploadFileMap', uploadFileMap)
 provide('destroyed', destroyed)
 provide('historyRecords', historyRecords)
 provide('typeWriterIsRunning', typeWriterIsRunning)
+provide('commentPanel', commentPanel)
+provide('commentState', commentState)
 
 watch(
   () => options.value.page,

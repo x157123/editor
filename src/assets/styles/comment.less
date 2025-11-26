@@ -1,0 +1,347 @@
+// 批注相关样式
+.umo-comment {
+  background-color: rgba(255, 235, 59, 0.3);
+  border-bottom: 2px solid #fbc02d;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(255, 235, 59, 0.5);
+  }
+
+  &[data-comment-id] {
+    position: relative;
+  }
+}
+
+.umo-comment-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 360px;
+  background-color: var(--umo-color-white);
+  border-left: 1px solid var(--umo-border-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+
+  .umo-comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--umo-border-color);
+    background-color: var(--umo-color-white-dark);
+
+    .umo-comment-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--umo-text-color);
+
+      .icon-comment {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .umo-comment-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .umo-dialog__close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: var(--umo-color-white);
+      }
+    }
+  }
+
+  .umo-comment-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--umo-border-color);
+    background-color: var(--umo-color-white-dark);
+
+    .umo-comment-tab {
+      flex: 1;
+      padding: 12px 16px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--umo-text-color-light);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+
+      &:hover {
+        background-color: var(--umo-color-white);
+        color: var(--umo-text-color);
+      }
+
+      &.active {
+        color: var(--umo-primary-color);
+        border-bottom-color: var(--umo-primary-color);
+        background-color: var(--umo-color-white);
+      }
+
+      .umo-comment-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        background-color: var(--umo-primary-color);
+        color: #fff;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      &.active .umo-comment-count {
+        background-color: var(--umo-primary-color);
+      }
+    }
+  }
+
+  .umo-comment-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+
+    .umo-comment-empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--umo-text-color-light);
+      font-size: 14px;
+    }
+
+    .umo-comment-item {
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--umo-border-color);
+      border-radius: 8px;
+      background-color: var(--umo-color-white);
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: var(--umo-primary-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      &.active {
+        border-color: var(--umo-primary-color);
+        background-color: rgba(var(--umo-primary-color-rgb), 0.05);
+      }
+
+      .umo-comment-item-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .umo-comment-author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .umo-comment-avatar,
+        .umo-comment-avatar-placeholder {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          flex-shrink: 0;
+
+          &.small {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .umo-comment-avatar {
+          object-fit: cover;
+        }
+
+        .umo-comment-avatar-placeholder {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--umo-primary-color);
+          color: #fff;
+          font-size: 14px;
+          font-weight: 500;
+
+          &.small {
+            font-size: 12px;
+          }
+        }
+
+        .umo-comment-author-info {
+          flex: 1;
+          min-width: 0;
+
+          .umo-comment-author-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--umo-text-color);
+            line-height: 1.4;
+          }
+
+          .umo-comment-time {
+            font-size: 12px;
+            color: var(--umo-text-color-light);
+            line-height: 1.4;
+            margin-top: 2px;
+          }
+        }
+      }
+
+      .umo-comment-item-actions {
+        .umo-comment-more {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          color: var(--umo-text-color-light);
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: var(--umo-text-color);
+          }
+        }
+      }
+
+      .umo-comment-item-content {
+        .umo-comment-text {
+          font-size: 14px;
+          line-height: 1.6;
+          color: var(--umo-text-color);
+          white-space: pre-wrap;
+          word-break: break-word;
+        }
+
+        .umo-comment-edit {
+          .umo-comment-edit-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 12px;
+          }
+        }
+      }
+
+      .umo-comment-replies {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--umo-border-color-light);
+
+        .umo-comment-reply {
+          padding: 12px;
+          background-color: var(--umo-color-white-dark);
+          border-radius: 6px;
+          margin-bottom: 12px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .umo-comment-author {
+            margin-bottom: 8px;
+          }
+
+          .umo-comment-text {
+            font-size: 13px;
+            padding-left: 32px;
+          }
+        }
+      }
+
+      .umo-comment-reply-input {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--umo-border-color-light);
+
+        .umo-comment-reply-actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: 8px;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+
+  .umo-comment-resize-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    cursor: ew-resize;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--umo-primary-color);
+    }
+  }
+}
+
+// 暗色主题适配
+[data-theme='dark'] {
+  .umo-comment {
+    background-color: rgba(255, 235, 59, 0.2);
+
+    &:hover {
+      background-color: rgba(255, 235, 59, 0.3);
+    }
+  }
+
+  .umo-comment-container {
+    background-color: var(--umo-color-dark);
+    border-left-color: var(--umo-border-color-dark);
+
+    .umo-comment-header {
+      background-color: var(--umo-color-dark-light);
+      border-bottom-color: var(--umo-border-color-dark);
+    }
+
+    .umo-comment-tabs {
+      background-color: var(--umo-color-dark-light);
+      border-bottom-color: var(--umo-border-color-dark);
+    }
+
+    .umo-comment-content {
+      .umo-comment-item {
+        background-color: var(--umo-color-dark);
+        border-color: var(--umo-border-color-dark);
+
+        &.active {
+          background-color: rgba(var(--umo-primary-color-rgb), 0.1);
+        }
+
+        .umo-comment-replies .umo-comment-reply {
+          background-color: var(--umo-color-dark-light);
+        }
+      }
+    }
+  }
+}

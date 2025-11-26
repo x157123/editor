@@ -777,6 +777,35 @@
     "minute": "{n} 分钟",
     "second": "{n} 秒"
   },
+  "comment": {
+    "title": "批注",
+    "add": "添加批注",
+    "selectTextFirst": "请先选中文本",
+    "selectedText": "选中的文本",
+    "inputPlaceholder": "请输入批注内容...",
+    "contentRequired": "批注内容不能为空",
+    "userRequired": "请先配置当前用户信息",
+    "addSuccess": "批注添加成功",
+    "defaultUser": "默认用户",
+    "anonymous": "匿名用户",
+    "unresolved": "未解决",
+    "resolved": "已解决",
+    "empty": "暂无批注",
+    "reply": "回复",
+    "edit": "编辑",
+    "delete": "删除",
+    "resolve": "解决",
+    "reopen": "重新打开",
+    "save": "保存",
+    "cancel": "取消",
+    "editPlaceholder": "编辑批注内容...",
+    "replyPlaceholder": "输入回复内容...",
+    "viewComment": "查看批注",
+    "justNow": "刚刚",
+    "minutesAgo": "{minutes} 分钟前",
+    "hoursAgo": "{hours} 小时前",
+    "daysAgo": "{days} 天前"
+  },
   "dialog": {
     "cancel": "取消"
   }

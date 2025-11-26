@@ -34,6 +34,7 @@ import BreakMarks from './break-marks'
 import BulletList from './bullet-list'
 import Callout from './callout'
 import CodeBlock from './code-block'
+import Comment from './comment'
 import Datetime from './datetime'
 import Echarts from './echarts'
 import File from './file'
@@ -78,6 +79,7 @@ export const getDefaultExtensions = ({
     document: doc,
     users,
     file,
+    comment,
     disableExtensions,
   } = options.value
 
@@ -120,6 +122,10 @@ export const getDefaultExtensions = ({
     optionBox: OptionBox,
     bookmark: Bookmark.configure({
       class: 'umo-editor-bookmark',
+    }),
+    comment: Comment.configure({
+      class: 'umo-comment',
+      onCommentClick: comment?.onCommentClick,
     }),
     'hard-break': BreakMarks.configure({
       visible: page?.showBreakMarks,

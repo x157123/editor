@@ -212,6 +212,7 @@
         <template v-if="currentMenu === 'page'">
           <div class="umo-virtual-group">
             <menus-toolbar-page-toggle-toc />
+            <menus-toolbar-page-toggle-comment v-if="!disableMenu('comment')" />
           </div>
           <div class="umo-virtual-group">
             <div class="umo-virtual-group-row">

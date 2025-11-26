@@ -166,6 +166,38 @@ export interface UserItem {
   avatar?: string
 }
 
+export interface CommentAuthor {
+  id: string
+  name: string
+  avatar?: string
+}
+
+export interface CommentReply {
+  id: string
+  content: string
+  author: CommentAuthor
+  createdAt: number
+}
+
+export interface Comment {
+  id: string
+  content: string
+  author: CommentAuthor
+  createdAt: number
+  updatedAt?: number
+  resolved: boolean
+  replies: CommentReply[]
+}
+
+export interface CommentOptions {
+  enabled?: boolean
+  currentUser?: CommentAuthor
+  onCommentClick?: (commentId: string) => void
+  onChange?: (commentId: string, data: any) => void
+  onResolve?: (commentId: string) => void
+  onDelete?: (commentId: string) => void
+}
+
 export interface WebPageItem {
   label?: LocaleLabel
   icon?: string
@@ -265,6 +297,7 @@ export interface UmoEditorOptions {
   extensions?: Extension[]
   disableExtensions?: string[]
   translations?: Record<string, unknown>
+  comment?: CommentOptions
   onSave?: OnSaveFunction
   onFileUpload?: (file: File) => Promise<{ id: string; url: string }>
   onFileDelete?: (id: string, url: string, type?: DeleteFileType) => void
