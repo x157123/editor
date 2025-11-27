@@ -1,4 +1,5 @@
 import { Mark, mergeAttributes } from '@tiptap/core'
+import { Plugin, PluginKey } from '@tiptap/pm/state'
 
 export interface CommentOptions {
   /**
@@ -86,8 +87,34 @@ export default Mark.create<CommentOptions>({
   renderHTML({ HTMLAttributes }) {
     return [
       'span',
-      mergeAttributes(HTMLAttributes, { class: this.options.class }),
+      mergeAttributes(HTMLAttributes, {
+        class: this.options.class,
+        style: 'cursor: pointer;',
+      }),
       0,
+    ]
+  },
+
+  addProseMirrorPlugins() {
+    return [
+      new Plugin({
+        key: new PluginKey('commentClick'),
+        props: {
+          handleDOMEvents: {
+            click: (view, event) => {
+              const target = event.target as HTMLElement
+              if (target.hasAttribute('data-comment-id')) {
+                const commentId = target.getAttribute('data-comment-id')
+                if (commentId && this.options.onCommentClick) {
+                  this.options.onCommentClick(commentId)
+                }
+                return true
+              }
+              return false
+            },
+          },
+        },
+      }),
     ]
   },
 

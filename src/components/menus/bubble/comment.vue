@@ -21,6 +21,7 @@ const editor = inject('editor')
 const commentPanel = inject('commentPanel')
 const options = inject('options')
 const container = inject('container')
+const commentState = inject('commentState')
 
 const dialogVisible = ref(false)
 const selectedText = ref('')
@@ -56,6 +57,12 @@ const handleAddComment = (content: string) => {
   // 添加批注标记到选中文本
   editor.value.commands.setComment(commentId)
 
+  // 添加批注数据到 commentState
+  if (commentState.value) {
+    commentState.value.addComment(content, commentId)
+    commentState.value.setActiveComment(commentId)
+  }
+
   // 触发批注变更回调
   if (options.value.comment?.onChange) {
     const { from, to } = editor.value.state.selection
@@ -76,5 +83,10 @@ const handleAddComment = (content: string) => {
     attach: container,
     content: t('comment.addSuccess'),
   })
+
+  // 确保批注面板打开
+  if (!commentPanel.value) {
+    commentPanel.value = true
+  }
 }
 </script>

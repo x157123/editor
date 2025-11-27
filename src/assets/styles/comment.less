@@ -16,16 +16,16 @@
 
 .umo-comment-container {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
   width: 360px;
+  max-height: 600px;
   background-color: var(--umo-color-white);
-  border-left: 1px solid var(--umo-border-color);
+  border: 1px solid var(--umo-border-color);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   z-index: 100;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  animation: slideInFromRight 0.3s ease-out;
 
   .umo-comment-header {
     display: flex;
@@ -34,6 +34,7 @@
     padding: 16px 20px;
     border-bottom: 1px solid var(--umo-border-color);
     background-color: var(--umo-color-white-dark);
+    border-radius: 8px 8px 0 0;
 
     .umo-comment-title {
       display: flex;
@@ -125,6 +126,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 16px;
+    border-radius: 0 0 8px 8px;
 
     .umo-comment-empty {
       text-align: center;
@@ -289,19 +291,17 @@
     }
   }
 
-  .umo-comment-resize-handle {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    cursor: ew-resize;
-    background-color: transparent;
-    transition: background-color 0.2s ease;
+}
 
-    &:hover {
-      background-color: var(--umo-primary-color);
-    }
+// 浮现动画
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -317,7 +317,8 @@
 
   .umo-comment-container {
     background-color: var(--umo-color-dark);
-    border-left-color: var(--umo-border-color-dark);
+    border-color: var(--umo-border-color-dark);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 
     .umo-comment-header {
       background-color: var(--umo-color-dark-light);

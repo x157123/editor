@@ -155,6 +155,20 @@ const destroyed = ref(false)
 const typeWriterIsRunning = ref(false)
 const commentPanel = ref(false)
 const commentState = ref(null)
+
+// 设置批注点击回调
+if (!options.value.comment) {
+  options.value.comment = {}
+}
+options.value.comment.onCommentClick = (commentId: string) => {
+  commentPanel.value = true
+  // 通知批注组件更新活动批注
+  nextTick(() => {
+    const event = new CustomEvent('comment-click', { detail: { commentId } })
+    document.dispatchEvent(event)
+  })
+}
+
 provide('container', container)
 provide('options', options)
 provide('editor', editor)
